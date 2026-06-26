@@ -1,6 +1,20 @@
 // this is only abstracted because camera movement and camera orientation is needed for EFX and it can get quite repetitive
 // and also because it assumes you know how the inner workings work. Right?
 namespace LOAL {
+  float deltaTime = 0.0f;	
+  float lastFrame = 0.0f;
+
+  float fov = 45.0f;
+  float yaw = -90.0f;
+  float pitch = 0.0f;
+  float firstMouse = 1;
+
+  glm::vec3 camPos = glm::vec3(0.0f, 0.0f, 3.0f);
+  glm::vec3 camFront = glm::vec3(0.0f, 0.0f, -1.0f);
+  glm::vec3 camUp = glm::vec3(0.0f, 1.0f, 0.0f);
+
+  float lastX = 400, lastY = 300;
+
   void processInput(GLFWwindow *window) {
           if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {glfwSetWindowShouldClose(window, true);}
            const float camSpeed = static_cast<float>(2.5f * deltaTime);
@@ -16,6 +30,7 @@ namespace LOAL {
           if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
                  camPos += glm::normalize(glm::cross(camFront, camUp)) * camSpeed;
     }
+  }
   void mouse_callback(GLFWwindow *window, double xpos, double ypos) {
   	if (firstMouse) {
   		std::cout << "mousey moved\n";
@@ -45,5 +60,5 @@ namespace LOAL {
   	direction.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
   	direction.y = sin(glm::radians(pitch));
   	camFront = glm::normalize(direction);	
-}
+  }
 }
