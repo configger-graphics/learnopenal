@@ -12,6 +12,7 @@ find_package(glfw3 REQUIRED)
 find_package(OpenGL REQUIRED)
 
 add_executable(${PROJECT_NAME}
+  external/glad/src/glad.c
   scripts/openALinit.cpp
 )
 
