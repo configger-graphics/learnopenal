@@ -19,6 +19,7 @@ target_include_directories(${PROJECT_NAME}
   external/openal-soft/include # isn't included inside this folder so you must add it yourself
   external/glad/include # same thing for this library
   external/stb_vorbis # you get the point
+  external/glm
 )
 
 target_link_directories(${PROJECT_NAME}
