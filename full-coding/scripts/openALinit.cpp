@@ -41,11 +41,6 @@ int main() {
 			alcMakeContextCurrent(Context);
 		}
 	}
-
-	ALboolean g_bEAX = alIsExtensionPresent("EAX2.0");
-
-  alGetError(); // clear the code
-	
 	unsigned int ABO;
 	alGenBuffers(1, &ABO);
 	if ((error = alGetError()) != AL_NO_ERROR) {
