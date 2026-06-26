@@ -1,3 +1,7 @@
+// source: https://www.openal.org/documentation/openal-1.1-specification.pdf
+// source https://www.openal.org/documentation/OpenAL_Programmers_Guide.pdf
+// This is where I get my information, I adapt and transform it into new information for the user to understand.
+
 #include <iostream>
 #include <cstdlib>
 #include <glad/glad.h>
