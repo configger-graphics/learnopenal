@@ -26,13 +26,9 @@ int main() {
             return -1;
   }
 
-  glViewport(0, 0, 800, 600);
-	
-	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+  	glViewport(0, 0, 800, 600);
 	
 	glEnable(GL_DEPTH_TEST);
-	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
-	glfwSetCursorPosCallback(window, mouse_callback);
 	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
   // where your OpenAL Code starts
