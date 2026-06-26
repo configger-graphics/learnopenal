@@ -1,5 +1,11 @@
 // this is only abstracted because camera movement and camera orientation is needed for EFX and it can get quite repetitive
 // and also because it assumes you know how the inner workings work. Right?
+#include <iostream>
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 namespace LOAL {
   float deltaTime = 0.0f;	
   float lastFrame = 0.0f;
