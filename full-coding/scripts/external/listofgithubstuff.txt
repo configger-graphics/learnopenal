@@ -1,0 +1,4 @@
+https://github.com/g-truc/glm
+https://glad.dav1d.de/
+https://www.glfw.org/
+https://github.com/kcat/openal-soft
