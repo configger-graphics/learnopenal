@@ -81,6 +81,13 @@ int main() {
 	}
 	
 	alSourcei(SBO, AL_BUFFER, (ALuint)ABO);
-	// some looping code I'll add in later for listeners positon and source position
+	// some looping code I'll add in later for listeners positon and source position section.
+	// [ ... ]
+	// exit code for OpenAL
+	Context=alcGetCurrentContext();
+	Device=alcGetContextsDevice(Context);
+	alcMakeContextCurrent(NULL);
+	alcDestroyContext(Context);
+	alcCloseDevice(Device); 
   return 0;
 }
