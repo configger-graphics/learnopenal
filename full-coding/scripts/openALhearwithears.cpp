@@ -87,7 +87,10 @@ int main() {
 	
 	alSourcei(SBO, AL_BUFFER, (ALuint)ABO);
 
-	
-  
+	LOAL::someBindingAbstraction(); // assuming you know what this does. If you don't, it just binds a cube, that's all.
+
+	while (!glfwWindowShouldClose(window)) {
+		// add to it later
+	}  
   return 0;
 }
