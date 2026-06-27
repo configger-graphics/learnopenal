@@ -3,7 +3,7 @@
 // This is where I get my information, I adapt and transform it into new information for the user to understand.
 
 #include <iostream>
-#include <cstdlib>
+#include <stdlib.h>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 // the newly added OpenGL Mathematic abstractionsi
@@ -12,7 +12,6 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <AL/al.h>
 #include <AL/alc.h>
-#define STB_VORBIS_IMPLEMENTATION
 #define STB_VORBIS_HEADER_ONLY
 #include "stb_vorbis.c"
 #include <AbstractedStuff.hpp>
@@ -65,7 +64,8 @@ int main() {
 	int NrChannels;
 	int sampleRate;
 	short* output;
-
+	int convertToMono = 1; // Set this to 1 if you want stereo sounds to be 3D.
+	
 	int numSamples = stb_vorbis_decode_filename((char*)"", &NrChannels, &sampleRate, &output);
 	if (numSamples < 0) {
 		std::cout << "failed to decode OGG file\n";
@@ -74,10 +74,22 @@ int main() {
 		return 1;
 	}
 	ALenum format;
+	short* newOutput = (short*)malloc((size_t)numSamples * sizeof(short));
 	if (NrChannels == 1) {
 		format = AL_FORMAT_MONO16;
 	} else if (NrChannels == 2) {
-		format = AL_FORMAT_STEREO16;
+		if (convertToMono) {	
+			for (int i = 0; i < numSamples; i++) {
+				int leftChannel = output[i*2];
+				int rightChannel = output[i*2+1];
+				short mono = static_cast<short>((leftChannel + rightChannel) / 2); // the formula!!! love it or hate it, it's needed here.
+				
+				newOutput[i] = mono;
+			}
+			format = AL_FORMAT_MONO16; // According to the 2007 programmers guide, buffers containing more than one channel of data will be played without 3D spatialization. 
+		} else {
+			format = AL_FORMAT_STEREO16;
+		}
 	} else {
 		std::cout << "too many, not supported.\n";
 		alDeleteBuffers(1, &ABO);

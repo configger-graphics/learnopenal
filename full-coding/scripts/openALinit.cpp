@@ -8,7 +8,6 @@
 #include <GLFW/glfw3.h>
 #include <AL/al.h>
 #include <AL/alc.h>
-#define STB_VORBIS_IMPLEMENTATION
 #define STB_VORBIS_HEADER_ONLY
 #include "stb_vorbis.c"
 

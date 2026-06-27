@@ -1,2 +1,2 @@
 # LearnOpenAL REPO
-This is description.
+This repo is documentation based on the extension of a framework known as OpenAL Soft, there isn't any much documentation on how OpenAL Soft extends upon OpenAL besides their programmers guides which are massively outdated along with the OpenAL main library itself. This documentation will use modern technologies like OpenAL Soft, and GLFW. This documentation will however may use OpenGL or Vulkan as a API that is worked with however this is heavily abstracted so you won't get strung up by code from OpenGL/Vulkan/Any API it may use.
